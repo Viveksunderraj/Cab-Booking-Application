@@ -61,13 +61,13 @@ public class CabBookingApp {
 		return cabTypeObj;
 	}
 	
-	void showRegistrationMenu() {
+	public void showRegistrationMenu() {
 		char registrationOption = '\0';
 
-		System.out.println("=========================================================================");
+		System.out.println("==========================================================================");
 		System.out.println("\nPlease Select an option\n");
 		System.out.println("1) Driver Registration 2) Customer Registration 3) Exit\n");
-		System.out.println("=========================================================================");
+		System.out.println("==========================================================================");
 		
 		registrationOption = sc.next().charAt(0);
 		
