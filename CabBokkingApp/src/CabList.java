@@ -7,16 +7,24 @@ public class CabList {
 	private HashMap<String ,Cab> driverList = new HashMap<String, Cab>();
 	
 	public void addCab(String key,Cab newCab) {
-		driverList.put(key,newCab);
+		
+		synchronized(driverList) {
+		
+			driverList.put(key,newCab);
+		}
 	}
 	
 	public Cab getCab(String key) {
+		
+		synchronized (driverList) {
+			
 		Cab cab = driverList.get(key);
 		
 		if(cab != null) {
 			return cab;
 		}
 		return null;
+		}
 	}
 	
 	public boolean isDriverExists(String key) {
@@ -57,7 +65,7 @@ public class CabList {
 		
 	}
 	
-	public String findNearestCab(CabBookingApp.CabType cabType, Location pickUpLocation ) {
+	public synchronized String findNearestCab(CabBookingApp.CabType cabType, Location pickUpLocation ) {
 		
 		String driverId = null;
 		double minDistance = Double.MAX_VALUE;
